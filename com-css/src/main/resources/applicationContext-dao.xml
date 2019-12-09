@@ -31,6 +31,8 @@
 	</bean>
 	<!-- Mapper映射文件的包扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<property name="basePackage" value="com.css.mapper" />
 	</bean>
 	
