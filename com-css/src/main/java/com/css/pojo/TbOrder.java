@@ -13,6 +13,8 @@ public class TbOrder {
 
     private Date updated;
 
+    private Long num;
+
     public Long getId() {
         return id;
     }
@@ -51,5 +53,13 @@ public class TbOrder {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    public Long getNum() {
+        return num;
+    }
+
+    public void setNum(Long num) {
+        this.num = num;
     }
 }
