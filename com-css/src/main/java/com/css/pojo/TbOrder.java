@@ -15,6 +15,8 @@ public class TbOrder {
 
     private Long num;
 
+    private Integer state;
+
     public Long getId() {
         return id;
     }
@@ -61,5 +63,13 @@ public class TbOrder {
 
     public void setNum(Long num) {
         this.num = num;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

@@ -8,10 +8,18 @@ import com.css.pojo.TbOrder;
  * @author mei
  *
  */
+/**
+ * @author mei
+ *
+ */
+/**
+ * @author mei
+ *
+ */
 public interface OrderService {
 	/**
 	 * @param tborder
-	 * @return	返回增加订单的状态
+	 * @return	返回提交订单的状态
 	 */
 	Boolean addOrder(TbOrder tborder) ;
 	/**
@@ -29,4 +37,10 @@ public interface OrderService {
 	 * @return	返回该用户的所有订单信息
 	 */
 	List<TbOrder> selectOrder(TbOrder tborder) ;
+	/**
+	 * @param tborder
+	 * @return 插入订单的状态
+	 */
+	Boolean  insertOrder(TbOrder tborder) ;
+	
 }
