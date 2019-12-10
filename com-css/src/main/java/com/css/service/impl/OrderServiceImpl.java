@@ -11,6 +11,7 @@ import com.css.mapper.TbOrderMapper;
 import com.css.mapper.TbUserMapper;
 import com.css.pojo.TbItem;
 import com.css.pojo.TbOrder;
+import com.css.pojo.TbOrderExample;
 import com.css.service.OrderService;
 @Transactional							//声明事务保证一组操作的一致性
 @Service("orderServiceImpl")
@@ -67,7 +68,17 @@ public class OrderServiceImpl implements OrderService {
 	public Boolean insertOrder(TbOrder tborder) {
 		// TODO Auto-generated method stub
 		Boolean flag = false ;
+//		TbOrderExample ex = new TbOrderExample() ;
+//		ex.createCriteria().andItemIdEqualTo(tborder.getItemId())；
 		try {
+//			保证order里关于某个用户的特定商品只有一条记录
+//			if(tbOrderMapper.selectByExample(ex).size()>0?true:false) {	//判断该商品是否添加过
+//				TbOrder order =	tbOrderMapper.selectByPrimaryKey(tborder.getItemId()) ;
+//				if(tbItem.getNum()>=tborder.getNum()?true:false) {	//判断库存数
+//				
+//					tbItemMapper.updateByPrimaryKey(tbItem) ;
+//				}
+//			}		
 			flag = tbOrderMapper.insert(tborder)==1?true:false  ;
 		}catch(Exception e) {
 			e.printStackTrace();
