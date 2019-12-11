@@ -1,6 +1,7 @@
 package com.css.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,9 @@ public class OrderController implements Serializable{
 	@ResponseBody
 	public List<Order>test(@PathVariable String id) {
 		System.out.println(id);
-		//userService.findOrder(Long.valueOf(id)) ;
-		return null;
+		return null ;
+		//return (ArrayList)userService.findOrder(Long.valueOf(id)) ;
+		
 	}
 	@RequestMapping("/index.jsp")
 	public String t() {

@@ -10,7 +10,7 @@ import com.css.mapper.TbUserMapper;
 import com.css.pojo.Order;
 import com.css.pojo.TbUser;
 import com.css.service.UserService;
-@Service("userServiceImpl")
+@Service
 public class UserServiceImpl implements UserService {
 	@Autowired
 	TbUserMapper tbUserMapper ;
