@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.css.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.css.pojo.Order" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT"></result>
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <collection property="tbItem" resultMap="TbItemMap"></collection>
+  </resultMap>
+  <resultMap type="com.css.pojo.TbItem" id="TbItemMap">
+  	  <id column="item_id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+<select id="findOrder" resultMap="BaseResultMap">
+select tb_order.id,tb_order.user_id ,tb_item.title,tb_item.id item_id,
+tb_item.title ,tb_item.price,tb_item.created,tb_item.updated,
+tb_order.num 
+from tb_order join tb_item on tb_order.item_id=tb_item.id
+where tb_order.user_id=#{id}
+</select>
+</mapper>
