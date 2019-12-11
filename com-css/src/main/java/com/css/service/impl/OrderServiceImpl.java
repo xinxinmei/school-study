@@ -1,5 +1,7 @@
 package com.css.service.impl;
 
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.css.mapper.TbItemMapper;
 import com.css.mapper.TbOrderMapper;
 import com.css.mapper.TbUserMapper;
+import com.css.pojo.SingleItemOrder;
 import com.css.pojo.TbItem;
 import com.css.pojo.TbOrder;
 import com.css.pojo.TbOrderExample;
@@ -84,6 +87,26 @@ public class OrderServiceImpl implements OrderService {
 			e.printStackTrace();
 		}
 		return flag;
+	}
+
+	@Override
+	public Boolean insertOrderList(List<SingleItemOrder> list) {
+		// TODO Auto-generated method stub
+		TbOrder tbOrder = new TbOrder() ;
+		Iterator<SingleItemOrder> it = list.iterator() ;
+		while(it.hasNext()) {
+			SingleItemOrder single = it.next() ;
+			tbOrder.setCreated(new Date());
+			tbOrder.setUpdated(new Date());
+			tbOrder.setItemId(single.getItemId());
+			tbOrder.setUserId(single.getUserId());
+			tbOrder.setState(0) ;
+			tbOrder.setNum(single.getNum());
+			if(this.insertOrder(tbOrder)) {
+				this.addOrder(tbOrder) ;
+			} ;
+		}
+		return null;
 	}
 
 }

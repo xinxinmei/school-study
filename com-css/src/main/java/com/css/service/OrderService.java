@@ -2,6 +2,7 @@ package com.css.service;
 
 import java.util.List;
 
+import com.css.pojo.SingleItemOrder;
 import com.css.pojo.TbOrder;
 
 /**
@@ -42,5 +43,10 @@ public interface OrderService {
 	 * @return 插入订单的状态
 	 */
 	Boolean  insertOrder(TbOrder tborder) ;
+	/**
+	 * @param list
+	 * @return 插入列表订单
+	 */
+	Boolean  insertOrderList(List<SingleItemOrder> list ) ;
 	
 }

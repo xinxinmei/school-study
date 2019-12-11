@@ -53,11 +53,11 @@
 				<version>${commons-net.version}</version>
 			</dependency>
 			<!-- Jackson Json处理工具包 -->
-		<!-- 	<dependency>
+			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
 				<version>${jackson.version}</version>
-			</dependency> -->
+			</dependency>
 			<!-- httpclient -->
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
