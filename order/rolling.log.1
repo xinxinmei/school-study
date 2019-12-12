@@ -1,0 +1,72 @@
+[framework] 2019-12-12 14:11:56,681 - org.springframework.web.context.ContextLoader -1501 [localhost-startStop-1] ERROR org.springframework.web.context.ContextLoader  - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in file [/home/mei/java_develop/eclipse-workspace/order/target/classes/spring/applicationContext-dao.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [/home/mei/java_develop/eclipse-workspace/order/target/classes/mapper/TbUserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.css.pojo.TbUser'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.css.pojo.TbUser
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:732)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:444)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:326)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4939)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [/home/mei/java_develop/eclipse-workspace/order/target/classes/mapper/TbUserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.css.pojo.TbUser'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.css.pojo.TbUser
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:522)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:381)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1642)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1579)
+	... 21 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.css.pojo.TbUser'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.css.pojo.TbUser
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:92)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:520)
+	... 24 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.css.pojo.TbUser'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.css.pojo.TbUser
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:118)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:265)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:252)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:244)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:116)
+	... 26 more
+Caused by: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.css.pojo.TbUser'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.css.pojo.TbUser
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:120)
+	at org.apache.ibatis.builder.BaseBuilder.resolveAlias(BaseBuilder.java:149)
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:116)
+	... 30 more
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.css.pojo.TbUser
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261)
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:116)
+	... 32 more
+[framework] 2019-12-12 14:15:59,288 - com.alibaba.druid.pool.DruidDataSource -68789 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 14:24:44,802 - com.alibaba.druid.pool.DruidDataSource -9121 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 14:26:58,639 - com.alibaba.druid.pool.DruidDataSource -9317 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 14:29:57,076 - com.alibaba.druid.pool.DruidDataSource -12578 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 14:32:52,295 - com.alibaba.druid.pool.DruidDataSource -15359 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 14:35:10,868 - com.alibaba.druid.pool.DruidDataSource -10933 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 14:37:22,213 - com.alibaba.druid.pool.DruidDataSource -7941 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 14:39:55,470 - com.alibaba.druid.pool.DruidDataSource -16474 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 14:45:40,540 - com.alibaba.druid.pool.DruidDataSource -32299 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:05:33,123 - com.alibaba.druid.pool.DruidDataSource -17721 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:08:45,658 - com.alibaba.druid.pool.DruidDataSource -14127 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:12:30,348 - com.alibaba.druid.pool.DruidDataSource -7211 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:13:55,619 - com.alibaba.druid.pool.DruidDataSource -29840 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:18:56,799 - com.alibaba.druid.pool.DruidDataSource -115469 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:29:15,040 - com.alibaba.druid.pool.DruidDataSource -68796 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:35:42,388 - com.alibaba.druid.pool.DruidDataSource -11628 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:39:11,587 - com.alibaba.druid.pool.DruidDataSource -97221 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:48:07,667 - com.alibaba.druid.pool.DruidDataSource -71001 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
+[framework] 2019-12-12 15:56:33,689 - com.alibaba.druid.pool.DruidDataSource -41419 [http-bio-8081-exec-1] ERROR com.alibaba.druid.pool.DruidDataSource  - testWhileIdle is true, validationQuery not set
