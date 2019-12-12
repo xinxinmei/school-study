@@ -50,9 +50,25 @@ public class OrderController implements Serializable{
 	@RequestMapping("/test/submit")
 	@ResponseBody
 	public String t(@RequestBody ArrayList<SingleItemOrder> sigleItemOrderList ) {
-		SingleItemOrder s = new SingleItemOrder() ;
+
 		System.out.println(sigleItemOrderList.size()) ;
-		orderService.insertOrderList(sigleItemOrderList) ;
-		return null ;
+		if(orderService.insertOrderList(sigleItemOrderList))
+			return "success";
+		return "fail" ;
+	}
+	
+	/**
+	 * @param tbOrder
+	 * @return	更新order状态
+	 */
+	@RequestMapping("/test/up")
+	@ResponseBody
+	public String u(@RequestBody TbOrder tbOrder) {
+		
+		if(orderService.updateOrder(tbOrder)) {
+			return "success" ;
+		};
+		
+		return "fail" ;
 	}
 }

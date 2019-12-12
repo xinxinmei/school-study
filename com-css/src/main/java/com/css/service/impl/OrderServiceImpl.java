@@ -43,16 +43,23 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Boolean updateOrder(TbOrder tborder) {
 		// TODO Auto-generated method stub
+		Boolean flag = false ;
+		TbOrderExample ex = new TbOrderExample() ;
+		ex.createCriteria().andItemIdEqualTo(tborder.getItemId()).andUserIdEqualTo(tborder.getUserId())	;
 		try {
 			TbItem tbItem =	tbItemMapper.selectByPrimaryKey(tborder.getItemId()) ;
 			if(tbItem.getNum()>=tborder.getNum()?true:false) {	//判断库存数
 			
+				tbItem.setNum((int) (tbItem.getNum()-tborder.getNum()));				//修改商品表的库存
 				tbItemMapper.updateByPrimaryKey(tbItem) ;
+				tborder.setCreated(new Date());
+				tborder.setUpdated(new Date());
+				flag = tbOrderMapper.updateByExample(tborder, ex)==1?true:false ;
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return flag;
 	}
 
 	@Override
@@ -92,6 +99,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Boolean insertOrderList(List<SingleItemOrder> list) {
 		// TODO Auto-generated method stub
+		Boolean flag = false ;
 		TbOrder tbOrder = new TbOrder() ;
 		Iterator<SingleItemOrder> it = list.iterator() ;
 		while(it.hasNext()) {
@@ -102,11 +110,12 @@ public class OrderServiceImpl implements OrderService {
 			tbOrder.setUserId(single.getUserId());
 			tbOrder.setState(0) ;
 			tbOrder.setNum(single.getNum());
-			if(this.insertOrder(tbOrder)) {
+			flag = this.insertOrder(tbOrder) ;
+			if(flag) {
 				this.addOrder(tbOrder) ;
 			} ;
 		}
-		return null;
+		return flag ;
 	}
 
 }
